@@ -1,3 +1,5 @@
+/* styles.css - by Mae Morella */
+
 /* Layout */
 
 body {
@@ -11,13 +13,16 @@ body {
 :root {
   --font-color: #000;
   --font-shadow-color: #fff;
+  --link-color: #2a70b6;
+  --link-highlight-color: #0f325f;
   --bg-color: #eee;
 }
 
 [data-theme="dark"] {
   --font-color: #fff;
   --font-shadow-color: #111;
-  --link-color: #0a86da;
+  --link-color: #cd6;
+  --link-highlight-color: #ef8;
   --link-white-color: #c1bfbd;
   --bg-color: #223;
 }
@@ -33,31 +38,34 @@ body {
 /* Links */
 
 a {
-  color: unset;
+  color: var(--link-color);
   text-decoration: underline;
+}
+a:hover {
+  color: var(--link-highlight-color);
 }
 
 
 /* Headings */
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4, h5 {
   font-family: 'Times New Roman', Times, serif;
-  font-variant: small-caps;
+  font-style: italic;
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 3em;
+    font-variant: small-caps;
+  font-style: normal;
 }
 
 h2 {
   font-size: 2em;
+  font-variant: small-caps;
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 /* Header */
@@ -65,6 +73,12 @@ h3 {
 .header {
   text-align: center;
   border-bottom: 1px solid;
+}
+
+.footer {
+  border-top: 1px solid;
+  padding-top: 1rem;
+  font-style: italic;
 }
 
 .profile-pic {
@@ -91,8 +105,6 @@ h3 {
   margin-left: 0;
   padding-left: 0;
 }
-
-
 
 /* Dark theme toggle */
 
