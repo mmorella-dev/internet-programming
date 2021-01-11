@@ -1,0 +1,104 @@
+/* Layout */
+
+body {
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Colors and dark theme */
+
+:root {
+  --font-color: #000;
+  --font-shadow-color: #fff;
+  --bg-color: #eee;
+}
+
+[data-theme="dark"] {
+  --font-color: #fff;
+  --font-shadow-color: #111;
+  --link-color: #0a86da;
+  --link-white-color: #c1bfbd;
+  --bg-color: #223;
+}
+
+body {
+  color: var(--font-color);
+  background: var(--bg-color);
+  transition: 0.25s color, 0.25s background, 0.25s text-shadow;
+  font: 1.2rem/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: var(--font-shadow-color) 0px 1px;
+}
+
+/* Links */
+
+a {
+  color: unset;
+  text-decoration: underline;
+}
+
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Times New Roman', Times, serif;
+  font-variant: small-caps;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+/* Header */
+
+.header {
+  text-align: center;
+  border-bottom: 1px solid;
+}
+
+.profile-pic {
+  border-radius: 100%;
+  border: 1px solid;
+  margin: 0 auto;
+  margin-right: 1rem;
+  filter: grayscale(1);
+}
+
+[data-theme="dark"] .profile-pic {
+  transition: 0.25s filter;
+  filter: grayscale(0);
+}
+
+
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.list-unstyled {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+
+
+/* Dark theme toggle */
+
+@media only screen and (min-width: 30rem) {
+  .theme-switch {
+    position: fixed;
+    right: 1rem;
+  }
+}
