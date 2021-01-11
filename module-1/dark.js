@@ -1,5 +1,4 @@
-// Dark/Light Mode Switch with CSS Variables
-// by Ananya Neogi
+// "Dark/Light Mode Switch with CSS Variables" by Ananya Neogi
 // https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
 
 //determines if the user has a set theme
@@ -31,6 +30,8 @@ const toggleSwitch = document.querySelector('#theme-switch input[type="checkbox"
 
 //function that changes the theme, and sets a localStorage variable to track the theme between page loads
 function switchTheme(e) {
+  toggleSwitch.disabled = true;
+  setTimeout(() => { toggleSwitch.disabled = false }, 250)
   if (e.target.checked) {
     localStorage.setItem('theme', 'dark');
     document.documentElement.setAttribute('data-theme', 'dark');
