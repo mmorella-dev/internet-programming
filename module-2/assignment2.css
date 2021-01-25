@@ -1,0 +1,55 @@
+form label {
+  font-weight: bold;
+  display: block;
+}
+
+.button {
+  display: inline-block;
+  color: var(--color, #000);
+  background: var(--background, #fff);
+  border: 1px solid var(--background, #fff) !important;
+  border-radius: 0.25rem;
+  padding: 0.25rem 1rem;
+  height: 100%;
+  transition: 0.5s background;
+  text-decoration: none !important;
+  text-shadow: none;
+}
+
+.button:hover {
+  background: var(--background-hover, #f8f8f8);
+  color: var(--color, #000);
+}
+
+.button-submit {
+  --color: white;
+  --background: #080;
+  --background-hover: #060;
+}
+
+.button-info {
+  --color: white;
+  --background: #09f;
+  --background-hover: #07d;
+}
+
+.button-remove {
+  --color: white;
+  --background: #f55;
+  --background-hover: #bb3e3e;
+}
+
+.button-sort {
+  --color: #222;
+  --background: #ffc400;
+  --background-hover: #b98800;
+}
+
+.sorted-table th,
+.sorted-table td {
+  text-align: center;
+}
+
+.hide {
+  display: none !important;
+}
