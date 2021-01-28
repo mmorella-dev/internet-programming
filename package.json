@@ -1,0 +1,20 @@
+{
+  "name": "cs-4720-internet-programming",
+  "description": "Code written for CS 4720",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morellam-dev/cs-4720-internet-programming.git"
+  },
+  "author": "morellam-dev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morellam-dev/cs-4720-internet-programming/issues"
+  },
+  "homepage": "https://github.com/morellam-dev/cs-4720-internet-programming#readme",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
