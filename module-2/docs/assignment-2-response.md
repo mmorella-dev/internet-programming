@@ -329,4 +329,4 @@ if (tableEl) {
 }
 ```
 
-The source code also utilizes some files (`../module-1/styles.css` and `..module-1/dark.js`) which were created in the previous module and are left. These files can be viewed at [github.com/morellam-dev/cs-4720-internet-programming/tree/main/module-1](https://github.com/morellam-dev/cs-4720-internet-programming/tree/main/module-1).
+The source code also utilizes some files (`../module-1/styles.css` and `..module-1/dark.js`) which were created in the previous module and are left unmodified. These files can be viewed at [github.com/morellam-dev/cs-4720-internet-programming/tree/main/module-1](https://github.com/morellam-dev/cs-4720-internet-programming/tree/main/module-1).
