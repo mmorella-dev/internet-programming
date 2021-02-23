@@ -30,16 +30,17 @@ const toggleSwitch = document.querySelector('#theme-switch input[type="checkbox"
 
 //function that changes the theme, and sets a localStorage variable to track the theme between page loads
 function switchTheme(e) {
-  toggleSwitch.disabled = true;
-  setTimeout(() => { toggleSwitch.disabled = false }, 250)
+  document.body.classList.add("color-fade");
+  // toggleSwitch.disabled = true;
+  // setTimeout(() => { toggleSwitch.disabled = false }, 250)
   if (e.target.checked) {
     localStorage.setItem('theme', 'dark');
     document.documentElement.setAttribute('data-theme', 'dark');
-    toggleSwitch.checked = true;
+    e.target.checked = true;
   } else {
     localStorage.setItem('theme', 'light');
     document.documentElement.setAttribute('data-theme', 'light');
-    toggleSwitch.checked = false;
+    e.target.checked = false;
   }
 }
 
