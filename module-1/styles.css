@@ -37,6 +37,10 @@ body {
 .color-fade {
   transition: 0.25s color, 0.25s background, 0.25s text-shadow;
 }
+code {
+  text-shadow: initial;
+}
+
 /* Links */
 
 a {
