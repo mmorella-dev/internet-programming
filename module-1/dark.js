@@ -25,6 +25,13 @@ function detectColorScheme() {
 }
 detectColorScheme();
 
+const toggleSwitchLabel = document.createElement("label");
+toggleSwitchLabel.id = "theme-switch"
+toggleSwitchLabel.className = "theme-switch"
+toggleSwitchLabel.setAttribute("for", "checkbox_theme")
+toggleSwitchLabel.innerHTML = `<input type="checkbox" id="checkbox_theme"> Toggle dark mode`
+document.body.prepend(toggleSwitchLabel);
+
 //identify the toggle switch HTML element
 const toggleSwitch = document.querySelector('#theme-switch input[type="checkbox"]');
 
