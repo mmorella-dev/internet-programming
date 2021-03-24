@@ -1,9 +1,9 @@
 @import url(https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css);
 
 :root {
-  --prism-foreground: #393a34;
+  --prism-foreground: #000000;
   --prism-background: #fbfbfb;
-  --prism-comment: #b8c4b8;
+  --prism-comment: #4a534a;
   --prism-string: #c67b5d;
   --prism-literal: #3a9c9b;
   --prism-keyword: #248459;
@@ -22,7 +22,7 @@
   --prism-scheme: dark;
   --prism-foreground: #DBE9E7;
   --prism-background: #1C1D29;
-  --prism-comment: #8589a1;
+  --prism-comment: #afb4cf;
   --prism-string: #FFD76D;
   --prism-literal: #C39AC9;
   --prism-keyword: #FF657A;
