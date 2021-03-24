@@ -104,7 +104,8 @@ h3 {
 
 
 .nav-links {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
   justify-content: space-evenly;
 }
 
