@@ -1,48 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title>MM | Assignment 2 - Part 2</title>
-  <meta name="description" content="">
-  <meta name="author" content="Mae Morella">
-  <!-- Reboot.css -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-reboot@4.5.4/dist/reboot.min.css">
-  <!-- Module 1 stylesheet -->
-  <link rel="stylesheet" href="../module-1/styles.css">
-  <!--  -->
-  <link rel="stylesheet" href="assignment2.css">
-</head>
-
-<body>
-  <header class="header">
-    <h1>Assignment 2 - Part 2</h1>
-    <ul class="nav-links list-unstyled">
-      <li><a href="../module-1/">Home</a></li>
-      <li><a href="./"><i class="devicon-javascript-plain" title="JavaScript"> </i>Assignment 2 - Part 1</a></li>
-    </ul>
-    <p class="lead">
-  </header>
-  <h2>Part 2: JavaScript Table Sorting</h2>
-  <form id="assignment2-demo">
-    <p>
-    <table class="sorted-table" id="sort-table">
-      <thead>
-        <th></th><th>Input</th><th>Length</th>
-      </tr>
-      </thead>
-      <tbody data-class="sort-table">
-      </tbody>
-    </table>
-    </p>
-    <p>
-      <button type="button" class="button button-submit" onclick="handleAddCell()">Add cell</button>
-      <button type="button" class="button button-remove" onclick="handleRemoveCell()">Remove cell</button>
-      <button type="button" class="button button-sort" onclick="handleSortTable()">Sort table</button>
-    </p>
-  </form>
-  <script src="part2.js"></script>
-  <script src="../module-1/dark.js"></script>
-</body>
-
-</html>
+<form id="assignment2-demo">
+  <p>
+  <table class="sorted-table" id="sort-table">
+    <thead>
+      <th></th><th>Input</th><th>Length</th>
+    </tr>
+    </thead>
+    <tbody data-class="sort-table">
+    </tbody>
+  </table>
+  </p>
+  <p>
+    <button type="button" class="button button-submit" onclick="handleAddCell()">Add cell</button>
+    <button type="button" class="button button-remove" onclick="handleRemoveCell()">Remove cell</button>
+    <button type="button" class="button button-sort" onclick="handleSortTable()">Sort table</button>
+  </p>
+</form>

@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MM | Assignment 4</title>
+  <meta name="description" content="Simple database and socket programs in Python">
+  <meta name="author" content="Mae Morella">
+  <style>/* styles.css - by Mae Morella */
+@import "https://cdn.jsdelivr.net/npm/bootstrap-reboot@4.5.4/dist/reboot.min.css";
+@import "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.8.2/devicon.min.css";
+
+/* Layout */
+
+body {
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Colors and dark theme */
+
+:root {
+  --font-color: #000;
+  --font-shadow-color: #fff;
+  --link-color: #2a70b6;
+  --link-highlight-color: #0f325f;
+  --bg-color: #eee;
+}
+
+[data-theme="dark"] {
+  --font-color: #fff;
+  --font-shadow-color: #111;
+  --link-color: #cd6;
+  --link-highlight-color: #ef8;
+  --link-white-color: #c1bfbd;
+  --bg-color: #223;
+}
+
+body {
+  color: var(--font-color);
+  background: var(--bg-color);
+  font: 1.2rem/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: var(--font-shadow-color) 0px 1px;
+}
+
+.color-fade {
+  transition: 0.25s color, 0.25s background, 0.25s text-shadow;
+}
+code {
+  text-shadow: initial;
+}
+
+/* Links */
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+a:hover {
+  color: var(--link-highlight-color);
+}
+
+
+/* Headings */
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+
+h1 {
+  font-size: 3em;
+    font-variant: small-caps;
+  font-style: normal;
+}
+
+h2 {
+  font-size: 2em;
+  font-variant: small-caps;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+/* Header */
+
+.header {
+  text-align: center;
+  border-bottom: 1px solid;
+}
+
+.footer {
+  border-top: 1px solid;
+  padding-top: 1rem;
+  font-style: italic;
+}
+
+.profile-pic {
+  border-radius: 100%;
+  border: 1px solid;
+  margin: 0 auto;
+  margin-right: 1rem;
+  filter: grayscale(1);
+}
+
+[data-theme="dark"] .profile-pic {
+  transition: 0.25s filter;
+  filter: grayscale(0);
+}
+
+
+.nav-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  justify-content: space-evenly;
+}
+
+.list-unstyled {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* Dark theme toggle */
+
+@media only screen and (min-width: 30rem) {
+  .theme-switch {
+    position: fixed;
+    right: 1rem;
+  }
+}</style>
+  <style>@import url(https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css);
+
+:root {
+  --prism-foreground: #000000;
+  --prism-background: #fbfbfb;
+  --prism-comment: #4a534a;
+  --prism-string: #c67b5d;
+  --prism-literal: #3a9c9b;
+  --prism-keyword: #248459;
+  --prism-function: #849145;
+  --prism-deleted: #a14f55;
+  --prism-class: #2b91af;
+  --prism-builtin: #a52727;
+  --prism-property: #ad502b;
+  --prism-namespace: #c96880;
+  --prism-punctuation: #8e8f8b;
+  --prism-decorator: #bd8f8f;
+  --prism-json-property: #698c96;
+}
+
+[data-theme="dark"] {
+  --prism-scheme: dark;
+  --prism-foreground: #DBE9E7;
+  --prism-background: #1C1D29;
+  --prism-comment: #afb4cf;
+  --prism-string: #FFD76D;
+  --prism-literal: #C39AC9;
+  --prism-keyword: #FF657A;
+  --prism-function: #BAD761;
+  --prism-deleted: #a14f55;
+  --prism-class: #5ebaa8;
+  --prism-builtin: #BAD761;
+  --prism-property: #dd8e6e;
+  --prism-namespace: #c96880;
+  --prism-punctuation: #9eaaa8;
+  --prism-decorator: #bd8f8f;
+  --prism-regex: #ab5e3f;
+  --prism-json-property: #6b8b9e;
+  --prism-line-number: #888888;
+  --prism-line-number-gutter: #eeeeee;
+  --prism-line-highlight-background: #444444;
+  --prism-selection-background: #181414;
+}
+
+[class*='language-'] {
+  white-space: pre-wrap !important;
+}</style>
+  <!-- Devicon CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.8.2/devicon.min.css">
+</head>
+
+<body>
+  
+<header class="header">
+<h1>Assignment 4</h1>
+<p class="lead">Simple database and socket programs in Python</p>
+<ul class="nav-links list-unstyled">
+  <li><a href="../module-1/"><span title="House emoji">🏠</span> Home</a></li>
+  <li><a href="https://github.com/morellam-dev/cs-4720-internet-programming/"><i class="devicon-github-original" title="GitHub"></i> View code on GitHub</a></li>
+</ul>
+</header>
+
+<main>
+<h2>Assignment 4: Database</h2>
+<style>
+.dirtree .folder {
+  list-style-type: '📁';
+}
+
+.dirtree .file {
+  list-style-type: '📄';
+}
+</style>
+<h3>Program file structure</h3>
+<ul class="dirtree">
+  <li class="folder">
+    <span>module-4/database</span>
+    <ul>
+      <li class="folder">
+        <span>db</span>
+        <ul>
+          <li class="file">customer_api.py</li>
+          <li class="file">db.py</li>
+        </ul>
+      </li>
+      <li class="file">report.py</li>
+      <li class="file">sqlite-sakila.sq</li>
+    </ul>
+  </li>
+</ul>
+<h2>Output</h2>
+<pre class="language-bash"><code class="language-bash">database$ python report.py<br><span class="token comment">#  ID| FirstName|LastName      |Rentals   |Address</span><br><span class="token comment"># ==============================================================================</span><br><span class="token comment">#  1       MARY SMITH            3       1913 Hanoi Way</span><br><span class="token comment">#  2   PATRICIA JOHNSON          5       1121 Loja Avenue</span><br><span class="token comment">#  3      LINDA WILLIAMS         2       692 Joliet Street</span><br><span class="token comment">#  4    BARBARA JONES            2       1566 Inegl Manor</span><br><span class="token comment">#  5  ELIZABETH BROWN            0       53 Idfu Parkway</span><br><span class="token comment">#  6   JENNIFER DAVIS            5       1795 Santiago de Compostela Way</span><br><span class="token comment">#  7      MARIA MILLER           4       900 Santiago de Compostela Parkway</span><br><span class="token comment">#  8      SUSAN WILSON           2       478 Joliet Way</span><br><span class="token comment">#  9   MARGARET MOORE            2       613 Korolev Drive</span><br><span class="token comment"># 10    DOROTHY TAYLOR           3       1531 Sal Drive</span><br><span class="token comment"># ... 400 more lines</span></code></pre>
+<h3>report.py</h3>
+<pre class="language-py"><code class="language-py"><span class="token comment"># report.py</span><br><br><span class="token keyword">from</span> db <span class="token keyword">import</span> db_access<span class="token punctuation">,</span> customer_api<br><br><span class="token comment"># Make a database query</span><br>customers <span class="token operator">=</span> customer_api<span class="token punctuation">.</span>get_all_customers_and_rentals<span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><span class="token comment"># Attempt to nicely format the output as a table</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token string">'ID'</span><span class="token punctuation">:</span><span class="token format-spec">>3</span><span class="token punctuation">}</span></span><span class="token string">|</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token string">'FirstName'</span><span class="token punctuation">:</span><span class="token format-spec">>10</span><span class="token punctuation">}</span></span><span class="token string">|</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token string">'LastName'</span><span class="token punctuation">:</span><span class="token format-spec">14</span><span class="token punctuation">}</span></span><span class="token string">|</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token string">'Rentals'</span><span class="token punctuation">:</span><span class="token format-spec">3</span><span class="token punctuation">}</span></span><span class="token string">\t|</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token string">'Address'</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'='</span> <span class="token operator">*</span> <span class="token number">80</span><span class="token punctuation">)</span><br><span class="token keyword">for</span> c <span class="token keyword">in</span> customers<span class="token punctuation">:</span><br>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>c<span class="token punctuation">[</span><span class="token string">'customer_id'</span><span class="token punctuation">]</span><span class="token punctuation">:</span><span class="token format-spec">>3</span><span class="token punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">{</span>c<span class="token punctuation">[</span><span class="token string">'first_name'</span><span class="token punctuation">]</span><span class="token punctuation">:</span><span class="token format-spec">>10</span><span class="token punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">{</span>c<span class="token punctuation">[</span><span class="token string">'last_name'</span><span class="token punctuation">]</span><span class="token punctuation">:</span><span class="token format-spec">14</span><span class="token punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">{</span>c<span class="token punctuation">[</span><span class="token string">'rental_count'</span><span class="token punctuation">]</span><span class="token punctuation">:</span><span class="token format-spec">3</span><span class="token punctuation">}</span></span><span class="token string">\t</span><span class="token interpolation"><span class="token punctuation">{</span>c<span class="token punctuation">[</span><span class="token string">'address'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><br></code></pre>
+<h3>db/customer_api.py</h3>
+<pre class="language-py"><code class="language-py"><span class="token comment"># db/customer.api.py</span><br><br><span class="token keyword">from</span> <span class="token punctuation">.</span>db <span class="token keyword">import</span> do_command<br><br><span class="token keyword">def</span> <span class="token function">get_all_customers_and_rentals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>  <span class="token triple-quoted-string string">"""Queries the database for all customers, addresses, and their rental counts<br>  :returns a list of dictionaries like {customer_id, last_name, first_name, rental_count, address}<br>  """</span><br>  customers <span class="token operator">=</span> get_all_customers<span class="token punctuation">(</span><span class="token punctuation">)</span><br>  <span class="token keyword">for</span> c <span class="token keyword">in</span> customers<span class="token punctuation">:</span><br>    c<span class="token punctuation">[</span><span class="token string">'rental_count'</span><span class="token punctuation">]</span> <span class="token operator">=</span> get_rental_count_for_customer<span class="token punctuation">(</span>c<span class="token punctuation">[</span><span class="token string">'customer_id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><br>  <span class="token keyword">return</span> customers<br><br><span class="token keyword">def</span> <span class="token function">get_all_customers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>  <span class="token triple-quoted-string string">"""Queries the database for all customers and addresses<br>  :returns a list of dicts like {customer_id, last_name, first_name, address}<br>  """</span><br>  <span class="token keyword">return</span> do_command<span class="token punctuation">(</span><span class="token triple-quoted-string string">"""SELECT customer_id, last_name, first_name, address<br>  from customer INNER JOIN address ON customer.address_id = address.address_id"""</span><span class="token punctuation">)</span><br><br><span class="token keyword">def</span> <span class="token function">get_customer_by_id</span><span class="token punctuation">(</span>customer_id<span class="token punctuation">)</span><span class="token punctuation">:</span><br>  <span class="token keyword">return</span> do_command<span class="token punctuation">(</span><span class="token string">"select customer_id, last_name, first_name from customer where customer_id = ?"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>customer_id<span class="token punctuation">]</span><span class="token punctuation">)</span><br><br><span class="token keyword">def</span> <span class="token function">get_rental_count_for_customer</span><span class="token punctuation">(</span>customer_id<span class="token punctuation">)</span><span class="token punctuation">:</span><br>  <span class="token keyword">return</span> do_command<span class="token punctuation">(</span><span class="token string">"select count(all) as rental_count from rental where inventory_id = ?"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>customer_id<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'rental_count'</span><span class="token punctuation">]</span><br></code></pre>
+<h3>db/db.py</h3>
+<pre class="language-py"><code class="language-py"><span class="token comment"># db/db.py</span><br><br><span class="token keyword">import</span> sqlite3<br><span class="token keyword">from</span> os<span class="token punctuation">.</span>path <span class="token keyword">import</span> join<span class="token punctuation">,</span> split<br><br><span class="token comment"># this file is external to the code</span><br>SQLITE_DATABASE_NAME <span class="token operator">=</span> <span class="token string">'sqlite-sakila.sq'</span><br><br><span class="token keyword">def</span> <span class="token function">dictionary_factory</span><span class="token punctuation">(</span>cursor<span class="token punctuation">,</span> row<span class="token punctuation">)</span><span class="token punctuation">:</span><br>  <span class="token triple-quoted-string string">"""<br>  Create a dictionary from rows in a cursor result.<br>  The keys will be the column names<br>  :param cursor   a cursor from which a query row has just been fetched<br>  :param row      the row that was fetched<br>  :return         A dictionary associating column names to values<br>  """</span><br>  col_names <span class="token operator">=</span> <span class="token punctuation">[</span>d<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> d <span class="token keyword">in</span> cursor<span class="token punctuation">.</span>description<span class="token punctuation">]</span><br>  <span class="token keyword">return</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token builtin">zip</span><span class="token punctuation">(</span>col_names<span class="token punctuation">,</span> row<span class="token punctuation">)</span><span class="token punctuation">)</span><br><br><span class="token keyword">def</span> <span class="token function">get_connection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>  fname <span class="token operator">=</span> SQLITE_DATABASE_NAME<br>  conn <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>fname<span class="token punctuation">)</span><br>  conn<span class="token punctuation">.</span>row_factory <span class="token operator">=</span> dictionary_factory<br>  <span class="token keyword">return</span> conn<br><br><span class="token keyword">def</span> <span class="token function">do_command</span><span class="token punctuation">(</span>cmd<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>  <span class="token triple-quoted-string string">"""<br>  Takes a SQL command and returns a list of results.<br>  Allows for arguments, providing a default value of []<br>  """</span><br>  <span class="token keyword">try</span><span class="token punctuation">:</span><br>    conn <span class="token operator">=</span> get_connection<span class="token punctuation">(</span><span class="token punctuation">)</span><br>    crs <span class="token operator">=</span> conn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span><br>    crs<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>cmd<span class="token punctuation">,</span> args<span class="token punctuation">)</span><br>    <span class="token keyword">return</span> crs<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span><br>  <span class="token keyword">finally</span><span class="token punctuation">:</span><br>    conn<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><br></code></pre>
+<h2>Assignment 4: Sockets</h2>
+<!-- File directory tree-->
+<ul class="dirtree">
+  <li class="folder">
+    <span>module-4/sockets</span>
+    <ul>
+      <li class="folder">
+        <span>simple_server</span>
+        <ul>
+          <li class="file">server.py</li>
+        </ul>
+      </li>
+      <li class="folder">
+        <span>polynomials</span>
+        <ul>
+          <li class="file">polynomials.py</li>
+        </ul>
+      </li>
+      <li class="file">polynomial_client.py</li>
+      <li class="file">polynomial_server.py</li>
+    </ul>
+  </li>
+</ul>
+<h3>Output</h3>
+<pre class="language-bash"><code class="language-bash">sockets$ python polynomial_server.py <span class="token operator">&amp;></span> /dev/null <span class="token operator">&amp;</span><br><span class="token comment"># (server running in background on port 12345)</span><br>sockets$ python polynomial_client.py<br><span class="token comment">#📤 Sent: `E1.0 -945 1689 -950 230 -25 1`</span><br><span class="token comment">#📩 Recv: `E0.0`</span><br><span class="token comment">#✅ Matched expected response</span><br><span class="token comment">#</span><br><span class="token comment">#📤 Sent: `S0 2 -945 1689 -950 230 -25 1 1e-15`</span><br><span class="token comment">#📩 Recv: `S1.0000000000000004`</span><br><span class="token comment">#✅ Matched expected response</span><br><span class="token comment">#</span><br><span class="token comment">#📤 Sent: `G4.1 0 0`</span><br><span class="token comment">#📩 Recv: `XIncorrect command type`</span><br><span class="token comment">#✅ Matched expected response</span><br><span class="token comment">#</span><br><span class="token comment">#📤 Sent: `4 1 0`</span><br><span class="token comment">#📩 Recv: `Xcould not convert string to float: ''`</span><br><span class="token comment">#✅ Matched expected response</span><br><span class="token comment">#</span><br><span class="token comment">#📤 Sent: `E1.0`</span><br><span class="token comment">#📩 Recv: `XToo few arguments`</span><br><span class="token comment">#✅ Matched expected response</span><br><span class="token comment">#</span><br><span class="token comment">#📤 Sent: `S1.0`</span><br><span class="token comment">#📩 Recv: `XToo few arguments`</span><br><span class="token comment">#✅ Matched expected response</span><br><span class="token comment">#</span><br><span class="token comment">#📤 Sent: `S0 2 -945 1689 -950 230 -25 1 -1e-15`</span><br><span class="token comment">#📩 Recv: `XInvalid tolerance`</span><br><span class="token comment">#✅ Matched expected response</span><br><span class="token comment">#</span><br><span class="token comment">#📤 Sent: `Not a number`</span><br><span class="token comment">#📩 Recv: `Xcould not convert string to float: 'ot'`</span><br><span class="token comment">#✅ Matched expected response</span><br><span class="token comment">#</span><br><span class="token comment">#📤 Sent: `S0 2 -945 1689 -950 230 -25 1 0`</span><br><span class="token comment">#📩 Recv: `XInvalid tolerance`</span><br><span class="token comment">#✅ Matched expected response</span><br><span class="token comment">#</span><br><span class="token comment">#📤 Sent: `S0 2 -945 1689 -950 230 G 1 1e-15`</span><br><span class="token comment">#📩 Recv: `Xcould not convert string to float: 'G'`</span><br><span class="token comment">#✅ Matched expected response</span></code></pre>
+<h3>polynomial_client.py</h3>
+<pre class="language-py"><code class="language-py"><span class="token comment"># polynomial_client.py</span><br><br><span class="token keyword">import</span> socket<br><span class="token keyword">from</span> time <span class="token keyword">import</span> sleep<br><span class="token keyword">import</span> logging<br><br>SERVER_IP <span class="token operator">=</span> <span class="token string">"localhost"</span><br>SERVER_PORT <span class="token operator">=</span> <span class="token number">12345</span><br><br><br><span class="token keyword">def</span> <span class="token function">create_connection</span><span class="token punctuation">(</span>ip<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> port<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>    sock <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span><span class="token punctuation">)</span><br>    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span><br>        <span class="token keyword">try</span><span class="token punctuation">:</span><br>            sock<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token punctuation">(</span>ip<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">)</span><br>            logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Connected to </span><span class="token interpolation"><span class="token punctuation">{</span>ip<span class="token punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token punctuation">{</span>port<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><br>            <span class="token keyword">return</span> sock<br>        <span class="token keyword">except</span> OSError <span class="token keyword">as</span> err<span class="token punctuation">:</span><br>            logging<span class="token punctuation">.</span>error<span class="token punctuation">(</span>err<span class="token punctuation">)</span><br>            logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><br>                <span class="token string-interpolation"><span class="token string">f"Failed while connecting to </span><span class="token interpolation"><span class="token punctuation">{</span>ip<span class="token punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token punctuation">{</span>port<span class="token punctuation">}</span></span><span class="token string">. Try again in 3 seconds..."</span></span><span class="token punctuation">)</span><br>            sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><br><br><br><span class="token keyword">def</span> <span class="token function">send_message</span><span class="token punctuation">(</span>sock<span class="token punctuation">:</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">,</span> message<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>    message_byte <span class="token operator">=</span> message<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><br>    sock<span class="token punctuation">.</span>sendall<span class="token punctuation">(</span>message_byte<span class="token punctuation">)</span><br>    logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Sent message: `</span><span class="token interpolation"><span class="token punctuation">{</span>message<span class="token punctuation">}</span></span><span class="token string">`"</span></span><span class="token punctuation">)</span><br>    <span class="token keyword">return</span> sock<br><br><br><span class="token keyword">def</span> <span class="token function">receive_message</span><span class="token punctuation">(</span>sock<span class="token punctuation">:</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span><br>    msg<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">""</span><br>    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span><br>        <span class="token builtin">bytes</span> <span class="token operator">=</span> sock<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">2048</span><span class="token punctuation">)</span><br>        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span><span class="token builtin">bytes</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span><br>            <span class="token keyword">break</span><br>        msg <span class="token operator">+=</span> <span class="token builtin">bytes</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># UTF-</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>        logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Received message: \"</span><span class="token interpolation"><span class="token punctuation">{</span>msg<span class="token punctuation">}</span></span><span class="token string">\""</span></span><span class="token punctuation">)</span><br>    <span class="token keyword">return</span> msg<br><br><br><span class="token keyword">def</span> <span class="token function">make_request</span><span class="token punctuation">(</span>msg<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>    <span class="token keyword">with</span> create_connection<span class="token punctuation">(</span>SERVER_IP<span class="token punctuation">,</span> SERVER_PORT<span class="token punctuation">)</span> <span class="token keyword">as</span> sock<span class="token punctuation">:</span><br>        send_message<span class="token punctuation">(</span>sock<span class="token punctuation">,</span> msg<span class="token punctuation">)</span><br>        sock<span class="token punctuation">.</span>shutdown<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><br>        <span class="token keyword">return</span> receive_message<span class="token punctuation">(</span>sock<span class="token punctuation">)</span><br><br><br>testing_strings <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"E1.0 -945 1689 -950 230 -25 1"</span><span class="token punctuation">,</span> <span class="token string">"E0.0"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>                   <span class="token punctuation">[</span><span class="token string">"S0 2 -945 1689 -950 230 -25 1 1e-15"</span><span class="token punctuation">,</span><br>                    <span class="token string">"S1.0000000000000004"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>                   <span class="token punctuation">[</span><span class="token string">"G4.1 0 0"</span><span class="token punctuation">,</span> <span class="token string">"XIncorrect command type"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>                   <span class="token punctuation">[</span><span class="token string">"4 1 0"</span><span class="token punctuation">,</span>  <span class="token string">"Xcould not convert string to float: ''"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>                   <span class="token punctuation">[</span><span class="token string">"E1.0"</span><span class="token punctuation">,</span> <span class="token string">"XToo few arguments"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>                   <span class="token punctuation">[</span><span class="token string">"S1.0"</span><span class="token punctuation">,</span> <span class="token string">"XToo few arguments"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>                   <span class="token punctuation">[</span><span class="token string">"S0 2 -945 1689 -950 230 -25 1 -1e-15"</span><span class="token punctuation">,</span><br>                    <span class="token string">"XInvalid tolerance"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>                   <span class="token punctuation">[</span><span class="token string">"Not a number"</span><span class="token punctuation">,</span><br>                    <span class="token string">"Xcould not convert string to float: 'ot'"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>                   <span class="token punctuation">[</span><span class="token string">"S0 2 -945 1689 -950 230 -25 1 0"</span><span class="token punctuation">,</span><br>                    <span class="token string">"XInvalid tolerance"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>                   <span class="token punctuation">[</span><span class="token string">"S0 2 -945 1689 -950 230 G 1 1e-15"</span><span class="token punctuation">,</span> <span class="token string">"Xcould not convert string to float: 'G'"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><br><br><span class="token comment"># logging.basicConfig(level=logging.INFO)</span><br><br><span class="token keyword">for</span> <span class="token builtin">input</span><span class="token punctuation">,</span> expected <span class="token keyword">in</span> testing_strings<span class="token punctuation">:</span><br>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"📤  Sent: `</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">input</span><span class="token punctuation">}</span></span><span class="token string">`"</span></span><span class="token punctuation">)</span><br>    response <span class="token operator">=</span> make_request<span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">)</span><br>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"📩  Recv: `</span><span class="token interpolation"><span class="token punctuation">{</span>response<span class="token punctuation">}</span></span><span class="token string">`"</span></span><span class="token punctuation">)</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>response <span class="token operator">!=</span> expected<span class="token punctuation">)</span><span class="token punctuation">:</span><br>        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"❌  Expected: `</span><span class="token interpolation"><span class="token punctuation">{</span>expected<span class="token punctuation">}</span></span><span class="token string">`"</span></span><span class="token punctuation">)</span><br>    <span class="token keyword">else</span><span class="token punctuation">:</span><br>        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"✅  Matched expected response"</span></span><span class="token punctuation">)</span><br>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><br></code></pre>
+<h3>polynomial_server.py</h3>
+<pre class="language-py"><code class="language-py"><span class="token keyword">import</span> logging<br><br><span class="token keyword">from</span> simple_server <span class="token keyword">import</span> server<br><span class="token keyword">from</span> polynomials <span class="token keyword">import</span> polynomials<br><br>logging<span class="token punctuation">.</span>basicConfig<span class="token punctuation">(</span>level<span class="token operator">=</span>logging<span class="token punctuation">.</span>INFO<span class="token punctuation">)</span><br><br>SERVER_PORT <span class="token operator">=</span> <span class="token number">12345</span><br><br><span class="token comment"># Define message handler command</span><br><br><br><span class="token keyword">def</span> <span class="token function">handle_command</span><span class="token punctuation">(</span>client_msg<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>    <span class="token triple-quoted-string string">"""<br>    Parse command as input to the functions in the polynomial library<br>    :param a client input string e.g 'E1.0 3.0 1.0'<br>    :returns an API response message e.g 'XInvalid input'<br>    """</span><br>    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>client_msg<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span><br>        <span class="token keyword">return</span> <span class="token string">'X'</span> <span class="token operator">+</span> <span class="token string">'Client message was empty'</span><br>    <span class="token comment"># Parse string message</span><br>    command <span class="token operator">=</span> client_msg<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>     <span class="token comment"># first character is an instruction</span><br>    params <span class="token operator">=</span> client_msg<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><br>    <span class="token comment"># Attempt to parse the input</span><br>    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>        <span class="token keyword">try</span><span class="token punctuation">:</span><br>            params<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>params<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><br>        <span class="token keyword">except</span> ValueError<span class="token punctuation">:</span><br>            <span class="token keyword">return</span> <span class="token string">'X'</span> <span class="token operator">+</span> <span class="token string-interpolation"><span class="token string">f"could not convert string to float: '</span><span class="token interpolation"><span class="token punctuation">{</span>params<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">'"</span></span><br>    <span class="token comment"># Check that the command is valid</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>command <span class="token keyword">not</span> <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'E'</span><span class="token punctuation">,</span> <span class="token string">'S'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>        <span class="token keyword">return</span> <span class="token string">'X'</span> <span class="token operator">+</span> <span class="token string-interpolation"><span class="token string">f"Incorrect command type"</span></span><br>    <span class="token comment"># Verify the number of parameters</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>command <span class="token operator">==</span> <span class="token string">'E'</span> <span class="token keyword">and</span> <span class="token builtin">len</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>command <span class="token operator">==</span> <span class="token string">'S'</span> <span class="token keyword">and</span> <span class="token builtin">len</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>        <span class="token keyword">return</span> <span class="token string">'X'</span> <span class="token operator">+</span> <span class="token string">'Too few arguments'</span><br>    <span class="token comment"># Execute commands</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>command <span class="token operator">==</span> <span class="token string">'E'</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>        logging<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><br>            <span class="token string-interpolation"><span class="token string">f"Calling polynomials.evaluate(</span><span class="token interpolation"><span class="token punctuation">{</span>params<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">, </span><span class="token interpolation"><span class="token punctuation">{</span>params<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token format-spec">]</span><span class="token punctuation">}</span></span><span class="token string">)"</span></span><span class="token punctuation">)</span><br>        result <span class="token operator">=</span> polynomials<span class="token punctuation">.</span>evaluate<span class="token punctuation">(</span>params<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> params<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><br>    <span class="token keyword">elif</span> <span class="token punctuation">(</span>command <span class="token operator">==</span> <span class="token string">'S'</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>        <span class="token keyword">if</span> <span class="token punctuation">(</span>params<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>            <span class="token keyword">return</span> <span class="token string">'X'</span> <span class="token operator">+</span> <span class="token string-interpolation"><span class="token string">f"Invalid tolerance"</span></span><br>        logging<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><br>            <span class="token string-interpolation"><span class="token string">f"Calling polynomials.bisection(</span><span class="token interpolation"><span class="token punctuation">{</span>params<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">, </span><span class="token interpolation"><span class="token punctuation">{</span>params<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">, </span><span class="token interpolation"><span class="token punctuation">{</span>params<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token format-spec">-1]</span><span class="token punctuation">}</span></span><span class="token string">, </span><span class="token interpolation"><span class="token punctuation">{</span>params<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">)"</span></span><span class="token punctuation">)</span><br>        result <span class="token operator">=</span> polynomials<span class="token punctuation">.</span>bisection<span class="token punctuation">(</span><br>            params<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> params<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> params<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> params<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><br>    <span class="token keyword">return</span> command <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><br><br><br><span class="token keyword">with</span> server<span class="token punctuation">.</span>create_listener<span class="token punctuation">(</span>SERVER_PORT<span class="token punctuation">)</span> <span class="token keyword">as</span> listener<span class="token punctuation">:</span><br>    <span class="token comment"># Loop until program is killed</span><br>    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span><br>        server<span class="token punctuation">.</span>accept_client<span class="token punctuation">(</span>listener<span class="token punctuation">,</span> handle_command<span class="token punctuation">)</span><br></code></pre>
+
+</main>
+  <footer class="footer">
+    <p>Copyright © 2021 Mae Morella</p>
+  </footer>
+  <script>// "Dark/Light Mode Switch with CSS Variables" by Ananya Neogi
+// https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
+
+//determines if the user has a set theme
+function detectColorScheme() {
+  var theme = "light"; //default to light
+
+  //local storage is used to override OS theme settings
+  if (localStorage.getItem("theme")) {
+    if (localStorage.getItem("theme") == "dark") {
+      var theme = "dark";
+    }
+  } else if (!window.matchMedia) {
+    //matchMedia method not supported
+    return false;
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    //OS theme setting detected as dark
+    var theme = "dark";
+  }
+
+  //dark theme preferred, set document with a `data-theme` attribute
+  if (theme == "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+}
+detectColorScheme();
+
+const toggleSwitchLabel = document.createElement("label");
+toggleSwitchLabel.id = "theme-switch"
+toggleSwitchLabel.className = "theme-switch"
+toggleSwitchLabel.setAttribute("for", "checkbox_theme")
+toggleSwitchLabel.innerHTML = `<input type="checkbox" id="checkbox_theme"> Toggle dark mode`
+document.body.prepend(toggleSwitchLabel);
+
+//identify the toggle switch HTML element
+const toggleSwitch = document.querySelector('#theme-switch input[type="checkbox"]');
+
+//function that changes the theme, and sets a localStorage variable to track the theme between page loads
+function switchTheme(e) {
+  document.body.classList.add("color-fade");
+  // toggleSwitch.disabled = true;
+  // setTimeout(() => { toggleSwitch.disabled = false }, 250)
+  if (e.target.checked) {
+    localStorage.setItem('theme', 'dark');
+    document.documentElement.setAttribute('data-theme', 'dark');
+    e.target.checked = true;
+  } else {
+    localStorage.setItem('theme', 'light');
+    document.documentElement.setAttribute('data-theme', 'light');
+    e.target.checked = false;
+  }
+}
+
+//listener for changing themes
+toggleSwitch.addEventListener('change', switchTheme, false);
+
+//pre-check the dark-theme checkbox if dark-theme is set
+if (document.documentElement.getAttribute("data-theme") == "dark") {
+  toggleSwitch.checked = true;
+}</script>
+</body>
+
+</html>

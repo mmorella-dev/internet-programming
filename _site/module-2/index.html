@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MM | Assignment 2</title>
+  <meta name="description" content="">
+  <meta name="author" content="Mae Morella">
+  <style>/* styles.css - by Mae Morella */
+@import "https://cdn.jsdelivr.net/npm/bootstrap-reboot@4.5.4/dist/reboot.min.css";
+@import "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.8.2/devicon.min.css";
+
+/* Layout */
+
+body {
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Colors and dark theme */
+
+:root {
+  --font-color: #000;
+  --font-shadow-color: #fff;
+  --link-color: #2a70b6;
+  --link-highlight-color: #0f325f;
+  --bg-color: #eee;
+}
+
+[data-theme="dark"] {
+  --font-color: #fff;
+  --font-shadow-color: #111;
+  --link-color: #cd6;
+  --link-highlight-color: #ef8;
+  --link-white-color: #c1bfbd;
+  --bg-color: #223;
+}
+
+body {
+  color: var(--font-color);
+  background: var(--bg-color);
+  font: 1.2rem/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: var(--font-shadow-color) 0px 1px;
+}
+
+.color-fade {
+  transition: 0.25s color, 0.25s background, 0.25s text-shadow;
+}
+code {
+  text-shadow: initial;
+}
+
+/* Links */
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+a:hover {
+  color: var(--link-highlight-color);
+}
+
+
+/* Headings */
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+
+h1 {
+  font-size: 3em;
+    font-variant: small-caps;
+  font-style: normal;
+}
+
+h2 {
+  font-size: 2em;
+  font-variant: small-caps;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+/* Header */
+
+.header {
+  text-align: center;
+  border-bottom: 1px solid;
+}
+
+.footer {
+  border-top: 1px solid;
+  padding-top: 1rem;
+  font-style: italic;
+}
+
+.profile-pic {
+  border-radius: 100%;
+  border: 1px solid;
+  margin: 0 auto;
+  margin-right: 1rem;
+  filter: grayscale(1);
+}
+
+[data-theme="dark"] .profile-pic {
+  transition: 0.25s filter;
+  filter: grayscale(0);
+}
+
+
+.nav-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  justify-content: space-evenly;
+}
+
+.list-unstyled {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* Dark theme toggle */
+
+@media only screen and (min-width: 30rem) {
+  .theme-switch {
+    position: fixed;
+    right: 1rem;
+  }
+}</style>
+  <style>@import url(https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css);
+
+:root {
+  --prism-foreground: #000000;
+  --prism-background: #fbfbfb;
+  --prism-comment: #4a534a;
+  --prism-string: #c67b5d;
+  --prism-literal: #3a9c9b;
+  --prism-keyword: #248459;
+  --prism-function: #849145;
+  --prism-deleted: #a14f55;
+  --prism-class: #2b91af;
+  --prism-builtin: #a52727;
+  --prism-property: #ad502b;
+  --prism-namespace: #c96880;
+  --prism-punctuation: #8e8f8b;
+  --prism-decorator: #bd8f8f;
+  --prism-json-property: #698c96;
+}
+
+[data-theme="dark"] {
+  --prism-scheme: dark;
+  --prism-foreground: #DBE9E7;
+  --prism-background: #1C1D29;
+  --prism-comment: #afb4cf;
+  --prism-string: #FFD76D;
+  --prism-literal: #C39AC9;
+  --prism-keyword: #FF657A;
+  --prism-function: #BAD761;
+  --prism-deleted: #a14f55;
+  --prism-class: #5ebaa8;
+  --prism-builtin: #BAD761;
+  --prism-property: #dd8e6e;
+  --prism-namespace: #c96880;
+  --prism-punctuation: #9eaaa8;
+  --prism-decorator: #bd8f8f;
+  --prism-regex: #ab5e3f;
+  --prism-json-property: #6b8b9e;
+  --prism-line-number: #888888;
+  --prism-line-number-gutter: #eeeeee;
+  --prism-line-highlight-background: #444444;
+  --prism-selection-background: #181414;
+}
+
+[class*='language-'] {
+  white-space: pre-wrap !important;
+}</style>
+  <!-- Devicon CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.8.2/devicon.min.css">
+</head>
+
+<body>
+  
+<header class="header">
+<h1>Assignment 2</h1>
+<p class="lead"></p>
+<ul class="nav-links list-unstyled">
+  <li><a href="../module-1/"><span title="House emoji">🏠</span> Home</a></li>
+  <li><a href="https://github.com/morellam-dev/cs-4720-internet-programming/"><i class="devicon-github-original" title="GitHub"></i> View code on GitHub</a></li>
+</ul>
+</header>
+
+<main>
+<style>form label {
+  font-weight: bold;
+  display: block;
+}
+
+.button {
+  display: inline-block;
+  color: var(--color, #000);
+  background: var(--background, #fff);
+  border: 1px solid var(--background, #fff) !important;
+  border-radius: 0.25rem;
+  padding: 0.25rem 1rem;
+  height: 100%;
+  transition: 0.5s background;
+  text-decoration: none !important;
+  text-shadow: none;
+}
+
+.button:hover {
+  background: var(--background-hover, #f8f8f8);
+  color: var(--color, #000);
+}
+
+.button-submit {
+  --color: white;
+  --background: #080;
+  --background-hover: #060;
+}
+
+.button-info {
+  --color: white;
+  --background: #09f;
+  --background-hover: #07d;
+}
+
+.button-remove {
+  --color: white;
+  --background: #f55;
+  --background-hover: #bb3e3e;
+}
+
+.button-sort {
+  --color: #222;
+  --background: #ffc400;
+  --background-hover: #b98800;
+}
+
+.sorted-table th,
+.sorted-table td {
+  text-align: center;
+}
+
+.hide {
+  display: none !important;
+}</style>
+<h2>Demo: JavaScript String Operations</h2>
+<form id="part1-demo">
+  <p>
+    <label for="squareNumberInput">Enter a number to square:</label>
+    <input id="squareNumberInput" type="number">
+    <button type="button" class="button button-submit" onclick="handleStringOperation('squareNumberInput', squareNumber)">Check</button>
+    <output for="squareNumberInput"></output>
+  </p>
+  <p>
+    <label>Check repeating letters:<br></label>
+    <input id="fixStartInput" type="text" list="fixStartList">
+    <button type="button" class="button button-submit" onclick="handleStringOperation('fixStartInput', fixStart)">Check</button>
+    <output for="fixStartInput"></output>
+    <datalist id="fixStartList">
+      <option value="babble"></option>
+      <option value="caca"></option>
+      <option value="\[^x]\<script>alert('XSS!');"></option>
+    </datalist>
+  </p>
+  <p>
+    <label>Bad/not bad checker:</label>
+    <input id="notBadInput" type="text" list="notBadList">
+    <button type="button" class="button button-submit" onclick="handleStringOperation('notBadInput', notBad)">Check</button>
+    <output for="notBadInput"></output>
+      <datalist id="notBadList">
+        <option value="This not bad cake is okay.">
+        <option value="This cake is not bad!">
+        <option value="This movie is not quite so bad!">
+      </datalist>
+  </p>
+</form>
+<script>
+// STRING PROGRAMS
+
+/**
+* Verbosely squares a number.
+* As a side effect, logs "The square of N is N^2."
+* @param {Number} n a number to square.
+* @returns {Number} the square of n.
+*/
+const squareNumber = (n) => {
+  const square = Math.pow(n, 2);
+  console.log(`The square of ${n} is ${square}.`);
+  return square;
+}
+
+/**
+* @param {String} str A string with at least one character.
+* @returns {String} the input string, but all succeeding occurrences of
+* its first character have been replaced with '*'
+*/
+const fixStart = (str) => {
+  const  first = str.charAt(0);
+  return first + str.slice(1).replaceAll(first, '*');
+}
+
+
+/**
+* Finds the first appearance of the substring 'not' and 'bad'.
+* If the 'bad' follows the 'not', then it should replace the whole 'not'...'bad'
+* @params {String} str
+* @returns {String}
+*/
+const notBad = (str) => str.replace(/not.*bad/g, "good");
+
+
+// EVENT HANDLER
+
+/**
+ * Execute a function using the `value` attribute of `<input id="elementId">`.
+ * The result is stored in `<output for="elementId">`
+ * @param {String} elementId The ID of an input element
+ * @param {(val: String) => String} func The function to execute
+ */
+const handleStringOperation = (elementId, func) => {
+  const inputEl = document.getElementById(elementId);
+  const outputEl = document.querySelector(`output[for=${elementId}]`);
+  if (inputEl.value && outputEl) {
+    outputEl.innerText = func(inputEl.value);
+  }
+}
+</script>
+<h2>Demo: JavaScript Table Operations</h2>
+<form id="assignment2-demo">
+  <p>
+  <table class="sorted-table" id="sort-table">
+    <thead>
+      <th></th><th>Input</th><th>Length</th>
+    </tr>
+    </thead>
+    <tbody data-class="sort-table">
+    </tbody>
+  </table>
+  </p>
+  <p>
+    <button type="button" class="button button-submit" onclick="handleAddCell()">Add cell</button>
+    <button type="button" class="button button-remove" onclick="handleRemoveCell()">Remove cell</button>
+    <button type="button" class="button button-sort" onclick="handleSortTable()">Sort table</button>
+  </p>
+</form>
+<script>
+// EVENT HANDLERS FOR ASSIGNMENT 2 PART 2
+
+const tableEl = document.querySelector("[data-class~=sort-table]");
+
+// Updates the length value
+const handleCellInput = (el) => {
+  const length = el.value.length;
+  const lengthEl = el.closest("[data-class~=row]").querySelector("[data-class~=length]");
+  lengthEl.innerText = length;
+}
+
+// Create a new cell, or unhide the most recently hidden one
+const handleAddCell = () => {
+  let hiddenRows = tableEl.querySelectorAll("[data-class~=row].hide");
+  let visibleRows = tableEl.querySelectorAll("[data-class~=row]:not(.hide)");
+  // if there is a hidden row,
+  if (hiddenRows.length > 0) {
+    // unhide the recently hidden row cell
+    hiddenRows[0].classList.remove("hide");
+  } else {
+    // create a new row element.
+    let index = visibleRows.length;
+    let template = document.createElement('template');
+    template.innerHTML = `<tr data-class="row">
+    <td data-class="index">${index}</td>
+    <td><input data-class="input" type="text" oninput="handleCellInput(this)"></td>
+    <td><output data-class="length">0</output></td></tr>`
+      .trim();
+    let newRow = template.content.firstChild;
+    tableEl.appendChild(newRow);
+  }
+}
+
+// Hide the last row
+const handleRemoveCell = () => {
+  let rows = tableEl.querySelectorAll("[data-class~=row]:not(.hide)");
+  if (rows.length > 1)
+    rows[rows.length - 1].classList.add("hide");
+}
+
+// Reorder the table by string length
+const handleSortTable = () => {
+  const inputs = tableEl.querySelectorAll("[data-class~=row]:not(.hide) [data-class~=input]");
+  let strings = [...inputs].map(el => el.value);
+  strings = strings.sort((a, b) => b.length - a.length);
+  inputs.forEach((el, i) => {
+    el.value = strings[i];
+    handleCellInput(el);
+  });
+}
+// When the page loads, create one empty row.
+if (tableEl) {
+  handleAddCell();
+}
+</script>
+<h3>part1.js</h3>
+<pre class="language-js"><code class="language-js"><span class="token comment">// STRING PROGRAMS</span><br><br><span class="token comment">/**<br>* Verbosely squares a number.<br>* As a side effect, logs "The square of N is N^2."<br>* @param {Number} n a number to square.<br>* @returns {Number} the square of n.<br>*/</span><br><span class="token keyword">const</span> <span class="token function-variable function">squareNumber</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> square <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">The square of </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>n<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>square<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">return</span> square<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/**<br>* @param {String} str A string with at least one character.<br>* @returns {String} the input string, but all succeeding occurrences of<br>* its first character have been replaced with '*'<br>*/</span><br><span class="token keyword">const</span> <span class="token function-variable function">fixStart</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span>  first <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">return</span> first <span class="token operator">+</span> str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span>first<span class="token punctuation">,</span> <span class="token string">'*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><br><span class="token comment">/**<br>* Finds the first appearance of the substring 'not' and 'bad'.<br>* If the 'bad' follows the 'not', then it should replace the whole 'not'...'bad'<br>* @params {String} str<br>* @returns {String}<br>*/</span><br><span class="token keyword">const</span> <span class="token function-variable function">notBad</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token operator">=></span> str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">not.*bad</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">"good"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><br><span class="token comment">// EVENT HANDLER</span><br><br><span class="token comment">/**<br> * Execute a function using the `value` attribute of `&lt;input id="elementId">`.<br> * The result is stored in `&lt;output for="elementId">`<br> * @param {String} elementId The ID of an input element<br> * @param {(val: String) => String} func The function to execute<br> */</span><br><span class="token keyword">const</span> <span class="token function-variable function">handleStringOperation</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">elementId<span class="token punctuation">,</span> func</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> inputEl <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span>elementId<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">const</span> outputEl <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">output[for=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>elementId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">]</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span>inputEl<span class="token punctuation">.</span>value <span class="token operator">&amp;&amp;</span> outputEl<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    outputEl<span class="token punctuation">.</span>innerText <span class="token operator">=</span> <span class="token function">func</span><span class="token punctuation">(</span>inputEl<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<h3>part1.html</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>part1-demo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>squareNumberInput<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Enter a number to square:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>squareNumberInput<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>number<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button button-submit<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleStringOperation(<span class="token punctuation">'</span>squareNumberInput<span class="token punctuation">'</span>, squareNumber)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Check<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>output</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>squareNumberInput<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>output</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span>Check repeating letters:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixStartInput<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">list</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixStartList<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button button-submit<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleStringOperation(<span class="token punctuation">'</span>fixStartInput<span class="token punctuation">'</span>, fixStart)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Check<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>output</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixStartInput<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>output</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>datalist</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixStartList<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>babble<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>caca<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>\[^x]\&lt;script>alert(<span class="token punctuation">'</span>XSS!<span class="token punctuation">'</span>);<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>datalist</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span>Bad/not bad checker:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>notBadInput<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">list</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>notBadList<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button button-submit<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleStringOperation(<span class="token punctuation">'</span>notBadInput<span class="token punctuation">'</span>, notBad)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Check<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>output</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>notBadInput<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>output</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>datalist</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>notBadList<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>This not bad cake is okay.<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>This cake is not bad!<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>This movie is not quite so bad!<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>datalist</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span></code></pre>
+
+</main>
+  <footer class="footer">
+    <p>Copyright © 2021 Mae Morella</p>
+  </footer>
+  <script>// "Dark/Light Mode Switch with CSS Variables" by Ananya Neogi
+// https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
+
+//determines if the user has a set theme
+function detectColorScheme() {
+  var theme = "light"; //default to light
+
+  //local storage is used to override OS theme settings
+  if (localStorage.getItem("theme")) {
+    if (localStorage.getItem("theme") == "dark") {
+      var theme = "dark";
+    }
+  } else if (!window.matchMedia) {
+    //matchMedia method not supported
+    return false;
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    //OS theme setting detected as dark
+    var theme = "dark";
+  }
+
+  //dark theme preferred, set document with a `data-theme` attribute
+  if (theme == "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+}
+detectColorScheme();
+
+const toggleSwitchLabel = document.createElement("label");
+toggleSwitchLabel.id = "theme-switch"
+toggleSwitchLabel.className = "theme-switch"
+toggleSwitchLabel.setAttribute("for", "checkbox_theme")
+toggleSwitchLabel.innerHTML = `<input type="checkbox" id="checkbox_theme"> Toggle dark mode`
+document.body.prepend(toggleSwitchLabel);
+
+//identify the toggle switch HTML element
+const toggleSwitch = document.querySelector('#theme-switch input[type="checkbox"]');
+
+//function that changes the theme, and sets a localStorage variable to track the theme between page loads
+function switchTheme(e) {
+  document.body.classList.add("color-fade");
+  // toggleSwitch.disabled = true;
+  // setTimeout(() => { toggleSwitch.disabled = false }, 250)
+  if (e.target.checked) {
+    localStorage.setItem('theme', 'dark');
+    document.documentElement.setAttribute('data-theme', 'dark');
+    e.target.checked = true;
+  } else {
+    localStorage.setItem('theme', 'light');
+    document.documentElement.setAttribute('data-theme', 'light');
+    e.target.checked = false;
+  }
+}
+
+//listener for changing themes
+toggleSwitch.addEventListener('change', switchTheme, false);
+
+//pre-check the dark-theme checkbox if dark-theme is set
+if (document.documentElement.getAttribute("data-theme") == "dark") {
+  toggleSwitch.checked = true;
+}</script>
+</body>
+
+</html>

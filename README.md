@@ -1,3 +1,8 @@
+---
+layout: home
+title: README
+---
+
 # cs-4720-internet-programming
 
 Code written for CS 4720 - Internet Programming at Kennesaw State University.
@@ -8,6 +13,11 @@ As of right now, this repository only contains static webpages. These are hosted
 * Install NodeJS
 * `npm install` to get dependencies
 * `npm start` to run the live server
+
+```bash
+npm install --include=dev
+npx @11ty/eleventy --serve
+```
 
 By default, the script at `server.js` will watch for any changes to the site files, and reload the page accordingly.
 

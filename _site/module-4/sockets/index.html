@@ -3,16 +3,16 @@
 
 <head>
   <meta charset="utf-8">
-  <title>MM | Assignment 4</title>
+  <title>MM | Assignment 4 - Sockets</title>
   <meta name="description" content="">
   <meta name="author" content="Mae Morella">
   <!-- Reboot.css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-reboot@4.5.4/dist/reboot.min.css">
   <!-- Module 1 stylesheet -->
-  <link rel="stylesheet" href="../module-1/styles.css">
+  <link rel="stylesheet" href="../../module-1/styles.css">
   <!-- PrismJS stylesheet -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css">
-  <link rel="stylesheet" href="../module-3/prism-vars-color.css">
+  <link rel="stylesheet" href="../../module-3/prism-vars-color.css">
   <style>
     code[class*=language-] {
       font-size: 0.875rem !important;
@@ -33,135 +33,20 @@
 
 <body>
   <header class="header">
-  <h1>Assignment 4</h1>
-      <ul class="nav-links list-unstyled">
-        <li><a href="../module-1/">Home</a></li>
-        <li><a><i class="devicon-python-plain" title="Python"> </i>Assignment 4 - Database</a></li>
-        <li><a href="./sockets"><i class="devicon-python-plain" title="Python"> </i>Assignment 4 - Sockets</a></li>
-      </ul>
+    <h1>Assignment 4</h1>
+    <ul class="nav-links list-unstyled">
+      <li><a href="../../module-1/">Home</a></li>
+      <li><a href="../"><i class="devicon-python-plain" title="Python"> </i>Assignment 4 - Database</a></li>
+      <li><a><i class="devicon-python-plain" title="Python"> </i>Assignment 4 - Sockets</a></li>
+    </ul>
     <p class="lead">
   </header>
   <main>
-    <h2>Assignment 4: Database</h2>
-    <a href="https://github.com/morellam-dev/cs-4720-internet-programming/tree/main/module-4/database"><i
+    <h2>Assignment 4: Sockets</h2>
+    <a href="https://github.com/morellam-dev/cs-4720-internet-programming/tree/main/module-4/sockets"><i
         class="devicon-github-original" title="GitHub"></i> View code on GitHub</a>
     <!-- File directory tree-->
     <h3>Program file structure</h3>
-    <ul class="dirtree">
-      <li class="folder">
-        <span>module-4/database</span>
-        <ul>
-          <li class="folder">
-            <span>db</span>
-            <ul>
-              <li class="file">customer_api.py</li>
-              <li class="file">db.py</li>
-            </ul>
-          </li>
-          <li class="file">report.py</li>
-          <li class="file">sqlite-sakila.sq</li>
-        </ul>
-      </li>
-    </ul>
-    <h3>Output</h3>
-    <pre><code class="language-bash">database$ python report.py
-#  ID| FirstName|LastName      |Rentals   |Address
-# ==============================================================================
-#  1       MARY SMITH            3       1913 Hanoi Way
-#  2   PATRICIA JOHNSON          5       1121 Loja Avenue
-#  3      LINDA WILLIAMS         2       692 Joliet Street
-#  4    BARBARA JONES            2       1566 Inegl Manor
-#  5  ELIZABETH BROWN            0       53 Idfu Parkway
-#  6   JENNIFER DAVIS            5       1795 Santiago de Compostela Way
-#  7      MARIA MILLER           4       900 Santiago de Compostela Parkway
-#  8      SUSAN WILSON           2       478 Joliet Way
-#  9   MARGARET MOORE            2       613 Korolev Drive
-# 10    DOROTHY TAYLOR           3       1531 Sal Drive
-# ... 400 more lines
-</code></pre>
-    <h3>report.py</h3>
-    <pre><code class="language-python"># report.py
-
-from db import db_access, customer_api
-
-# Make a database query
-customers = customer_api.get_all_customers_and_rentals()
-
-# Attempt to nicely format the output as a table
-print(f"{'ID':>3}|{'FirstName':>10}|{'LastName':14}|{'Rentals':3}\t|{'Address'}")
-print('=' * 80)
-for c in customers:
-    print(f"{c['customer_id']:>3} {c['first_name']:>10} {c['last_name']:14} {c['rental_count']:3}\t{c['address']}")
-
-</code></pre>
-    <h3>db/customer_api.py</h3>
-    <pre><code class="language-python"># db/customer.api.py
-
-from .db import do_command
-
-def get_all_customers_and_rentals():
-  """Queries the database for all customers, addresses, and their rental counts
-  :returns a list of dictionaries like {customer_id, last_name, first_name, rental_count, address}
-  """
-  customers = get_all_customers()
-  for c in customers:
-    c['rental_count'] = get_rental_count_for_customer(c['customer_id'])
-  return customers
-
-def get_all_customers():
-  """Queries the database for all customers and addresses
-  :returns a list of dicts like {customer_id, last_name, first_name, address}
-  """
-  return do_command("""SELECT customer_id, last_name, first_name, address
-  from customer INNER JOIN address ON customer.address_id = address.address_id""")
-
-def get_customer_by_id(customer_id):
-  return do_command("select customer_id, last_name, first_name from customer where customer_id = ?", [customer_id])
-
-def get_rental_count_for_customer(customer_id):
-  return do_command("select count(all) as rental_count from rental where inventory_id = ?", [customer_id])[0]['rental_count']
-</code></pre>
-    <h3>db/db.py</h3>
-    <pre><code class="language-python"># db/db.py
-
-import sqlite3
-from os.path import join, split
-
-# this file is external to the code
-SQLITE_DATABASE_NAME = 'sqlite-sakila.sq'
-
-def dictionary_factory(cursor, row):
-  """
-  Create a dictionary from rows in a cursor result.
-  The keys will be the column names
-  :param cursor   a cursor from which a query row has just been fetched
-  :param row      the row that was fetched
-  :return         A dictionary associating column names to values
-  """
-  col_names = [d[0].lower() for d in cursor.description]
-  return dict(zip(col_names, row))
-
-def get_connection():
-  fname = SQLITE_DATABASE_NAME
-  conn = sqlite3.connect(fname)
-  conn.row_factory = dictionary_factory
-  return conn
-
-def do_command(cmd, args=[]):
-  """
-  Takes a SQL command and returns a list of results.
-  Allows for arguments, providing a default value of []
-  """
-  try:
-    conn = get_connection()
-    crs = conn.cursor()
-    crs.execute(cmd, args)
-    return crs.fetchall()
-  finally:
-    conn.close()
-</code></pre>
-    <h2>Assignment 4: Sockets</h2>
-    <!-- File directory tree-->
     <ul class="dirtree">
       <li class="folder">
         <span>module-4/sockets</span>
@@ -413,7 +298,7 @@ def send_response(client: socket.socket, response: str):
   </main>
 
 
-  <script src="../module-1/dark.js"></script>
+  <script src="../../module-1/dark.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js"
     integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ=="
     crossorigin="anonymous"></script>

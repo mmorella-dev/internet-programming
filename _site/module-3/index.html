@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MM | Assignment 3</title>
+  <meta name="description" content="Very simple Python programs.">
+  <meta name="author" content="Mae Morella">
+  <style>/* styles.css - by Mae Morella */
+@import "https://cdn.jsdelivr.net/npm/bootstrap-reboot@4.5.4/dist/reboot.min.css";
+@import "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.8.2/devicon.min.css";
+
+/* Layout */
+
+body {
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Colors and dark theme */
+
+:root {
+  --font-color: #000;
+  --font-shadow-color: #fff;
+  --link-color: #2a70b6;
+  --link-highlight-color: #0f325f;
+  --bg-color: #eee;
+}
+
+[data-theme="dark"] {
+  --font-color: #fff;
+  --font-shadow-color: #111;
+  --link-color: #cd6;
+  --link-highlight-color: #ef8;
+  --link-white-color: #c1bfbd;
+  --bg-color: #223;
+}
+
+body {
+  color: var(--font-color);
+  background: var(--bg-color);
+  font: 1.2rem/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: var(--font-shadow-color) 0px 1px;
+}
+
+.color-fade {
+  transition: 0.25s color, 0.25s background, 0.25s text-shadow;
+}
+code {
+  text-shadow: initial;
+}
+
+/* Links */
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+a:hover {
+  color: var(--link-highlight-color);
+}
+
+
+/* Headings */
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+
+h1 {
+  font-size: 3em;
+    font-variant: small-caps;
+  font-style: normal;
+}
+
+h2 {
+  font-size: 2em;
+  font-variant: small-caps;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+/* Header */
+
+.header {
+  text-align: center;
+  border-bottom: 1px solid;
+}
+
+.footer {
+  border-top: 1px solid;
+  padding-top: 1rem;
+  font-style: italic;
+}
+
+.profile-pic {
+  border-radius: 100%;
+  border: 1px solid;
+  margin: 0 auto;
+  margin-right: 1rem;
+  filter: grayscale(1);
+}
+
+[data-theme="dark"] .profile-pic {
+  transition: 0.25s filter;
+  filter: grayscale(0);
+}
+
+
+.nav-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  justify-content: space-evenly;
+}
+
+.list-unstyled {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* Dark theme toggle */
+
+@media only screen and (min-width: 30rem) {
+  .theme-switch {
+    position: fixed;
+    right: 1rem;
+  }
+}</style>
+  <style>@import url(https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css);
+
+:root {
+  --prism-foreground: #000000;
+  --prism-background: #fbfbfb;
+  --prism-comment: #4a534a;
+  --prism-string: #c67b5d;
+  --prism-literal: #3a9c9b;
+  --prism-keyword: #248459;
+  --prism-function: #849145;
+  --prism-deleted: #a14f55;
+  --prism-class: #2b91af;
+  --prism-builtin: #a52727;
+  --prism-property: #ad502b;
+  --prism-namespace: #c96880;
+  --prism-punctuation: #8e8f8b;
+  --prism-decorator: #bd8f8f;
+  --prism-json-property: #698c96;
+}
+
+[data-theme="dark"] {
+  --prism-scheme: dark;
+  --prism-foreground: #DBE9E7;
+  --prism-background: #1C1D29;
+  --prism-comment: #afb4cf;
+  --prism-string: #FFD76D;
+  --prism-literal: #C39AC9;
+  --prism-keyword: #FF657A;
+  --prism-function: #BAD761;
+  --prism-deleted: #a14f55;
+  --prism-class: #5ebaa8;
+  --prism-builtin: #BAD761;
+  --prism-property: #dd8e6e;
+  --prism-namespace: #c96880;
+  --prism-punctuation: #9eaaa8;
+  --prism-decorator: #bd8f8f;
+  --prism-regex: #ab5e3f;
+  --prism-json-property: #6b8b9e;
+  --prism-line-number: #888888;
+  --prism-line-number-gutter: #eeeeee;
+  --prism-line-highlight-background: #444444;
+  --prism-selection-background: #181414;
+}
+
+[class*='language-'] {
+  white-space: pre-wrap !important;
+}</style>
+  <!-- Devicon CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.8.2/devicon.min.css">
+</head>
+
+<body>
+  
+<header class="header">
+<h1>Assignment 3</h1>
+<p class="lead">Very simple Python programs.</p>
+<ul class="nav-links list-unstyled">
+  <li><a href="../module-1/"><span title="House emoji">🏠</span> Home</a></li>
+  <li><a href="https://github.com/morellam-dev/cs-4720-internet-programming/"><i class="devicon-github-original" title="GitHub"></i> View code on GitHub</a></li>
+</ul>
+</header>
+
+<main>
+<h3>Hello world</h3>
+<pre class="language-py"><code class="language-py"><span class="token comment"># prints "hello world"</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><br></code></pre>
+<h3>word_guesser.py</h3>
+<pre class="language-py"><code class="language-py"><span class="token comment"># global variables</span><br><span class="token comment"># ================</span><br><br>secretWord <span class="token operator">=</span> <span class="token string">"FOX"</span> <span class="token comment"># the word to be guessed</span><br>guessedLetters <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'_'</span> <span class="token keyword">for</span> letter <span class="token keyword">in</span> secretWord<span class="token punctuation">]</span><br><br><span class="token comment"># letter guesser function</span><br><span class="token comment"># =======================</span><br><br><span class="token keyword">def</span> <span class="token function">guessLetter</span><span class="token punctuation">(</span>letter<span class="token punctuation">)</span><span class="token punctuation">:</span><br>  <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Guessed:"</span><span class="token punctuation">,</span> letter<span class="token punctuation">)</span><br>  found <span class="token operator">=</span> <span class="token boolean">False</span><br>  win <span class="token operator">=</span> <span class="token boolean">False</span><br>  <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>secretWord<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>    <span class="token keyword">if</span> letter <span class="token operator">==</span> secretWord<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">and</span> guessedLetters<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> letter<span class="token punctuation">:</span><br>      guessedLetters<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> letter<br>      found <span class="token operator">=</span> <span class="token boolean">True</span><br>    <span class="token keyword">if</span> checkWin<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>      win <span class="token operator">=</span> <span class="token boolean">True</span><br>  <span class="token comment"># print the current guessed letters</span><br>  <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token operator">*</span>guessedLetters<span class="token punctuation">)</span><br>  <span class="token comment"># if found a new letter, congratulate the user</span><br>  <span class="token keyword">if</span> found<span class="token punctuation">:</span><br>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Found a letter!"</span><span class="token punctuation">)</span><br>  <span class="token comment"># if no letters remaining, congratulate for winning</span><br>  <span class="token keyword">if</span> win<span class="token punctuation">:</span><br>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Congrats! You guessed the word!"</span><span class="token punctuation">)</span><br><br><span class="token keyword">def</span> <span class="token function">checkWin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>  <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>secretWord<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>    <span class="token keyword">if</span> secretWord<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> guessedLetters<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span><br>      <span class="token keyword">return</span> <span class="token boolean">False</span><br>  <span class="token keyword">return</span> <span class="token boolean">True</span><br><br><span class="token comment"># Sample input</span><br><span class="token comment"># ============</span><br><br>guessLetter<span class="token punctuation">(</span><span class="token string">"E"</span><span class="token punctuation">)</span><br>guessLetter<span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">)</span><br>guessLetter<span class="token punctuation">(</span><span class="token string">"O"</span><span class="token punctuation">)</span><br>guessLetter<span class="token punctuation">(</span><span class="token string">"B"</span><span class="token punctuation">)</span><br>guessLetter<span class="token punctuation">(</span><span class="token string">"F"</span><span class="token punctuation">)</span><br>guessLetter<span class="token punctuation">(</span><span class="token string">"O"</span><span class="token punctuation">)</span><br>guessLetter<span class="token punctuation">(</span><span class="token string">"X"</span><span class="token punctuation">)</span><br>guessLetter<span class="token punctuation">(</span><span class="token string">"X"</span><span class="token punctuation">)</span><br></code></pre>
+<h3>weather_map.py</h3>
+<pre class="language-py"><code class="language-py"><span class="token keyword">import</span> datetime<br><span class="token keyword">import</span> json<br><span class="token keyword">import</span> requests<br><br>user_id <span class="token operator">=</span> <span class="token string">""</span>  <span class="token comment"># SUBSTITUTE ID HERE</span><br>user_apiid <span class="token operator">=</span> <span class="token string">""</span>  <span class="token comment"># SUBSTITUTE VALUE HERE</span><br><br>zip_code <span class="token operator">=</span> <span class="token string">"30092"</span><br><br><span class="token comment"># make request to OpenWeatherMap API</span><br>weather_res <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://api.openweathermap.org/data/2.5/weather"</span><br>                           <span class="token operator">+</span> <span class="token string-interpolation"><span class="token string">f"?zip=</span><span class="token interpolation"><span class="token punctuation">{</span>zip_code<span class="token punctuation">}</span></span><span class="token string">"</span></span><br>                           <span class="token operator">+</span> <span class="token string-interpolation"><span class="token string">f"&amp;appid=</span><span class="token interpolation"><span class="token punctuation">{</span>user_apiid<span class="token punctuation">}</span></span><span class="token string">"</span></span><br>                           <span class="token operator">+</span> <span class="token string">"&amp;units=imperial"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><span class="token comment"># print results</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"ZIP code:            \t"</span><span class="token punctuation">,</span> zip_code<span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Name:                \t"</span><span class="token punctuation">,</span> weather_res<span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Current temperature: \t"</span><span class="token punctuation">,</span> weather_res<span class="token punctuation">[</span><span class="token string">"main"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"temp"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"°F"</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Atmospheric pressure:\t"</span><span class="token punctuation">,</span> weather_res<span class="token punctuation">[</span><span class="token string">"main"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"pressure"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"hPa"</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Wind speed           \t"</span><span class="token punctuation">,</span> weather_res<span class="token punctuation">[</span><span class="token string">"wind"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"speed"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"mph"</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Wind direction       \t"</span><span class="token punctuation">,</span><br>      weather_res<span class="token punctuation">[</span><span class="token string">"wind"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"deg"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"° clockwise from north"</span><span class="token punctuation">)</span><br>report_time <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>fromtimestamp<span class="token punctuation">(</span>weather_res<span class="token punctuation">[</span><span class="token string">"dt"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Time of report       \t"</span><span class="token punctuation">,</span> report_time<span class="token punctuation">.</span>isoformat<span class="token punctuation">(</span>sep<span class="token operator">=</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br></code></pre>
+
+</main>
+  <footer class="footer">
+    <p>Copyright © 2021 Mae Morella</p>
+  </footer>
+  <script>// "Dark/Light Mode Switch with CSS Variables" by Ananya Neogi
+// https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
+
+//determines if the user has a set theme
+function detectColorScheme() {
+  var theme = "light"; //default to light
+
+  //local storage is used to override OS theme settings
+  if (localStorage.getItem("theme")) {
+    if (localStorage.getItem("theme") == "dark") {
+      var theme = "dark";
+    }
+  } else if (!window.matchMedia) {
+    //matchMedia method not supported
+    return false;
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    //OS theme setting detected as dark
+    var theme = "dark";
+  }
+
+  //dark theme preferred, set document with a `data-theme` attribute
+  if (theme == "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+}
+detectColorScheme();
+
+const toggleSwitchLabel = document.createElement("label");
+toggleSwitchLabel.id = "theme-switch"
+toggleSwitchLabel.className = "theme-switch"
+toggleSwitchLabel.setAttribute("for", "checkbox_theme")
+toggleSwitchLabel.innerHTML = `<input type="checkbox" id="checkbox_theme"> Toggle dark mode`
+document.body.prepend(toggleSwitchLabel);
+
+//identify the toggle switch HTML element
+const toggleSwitch = document.querySelector('#theme-switch input[type="checkbox"]');
+
+//function that changes the theme, and sets a localStorage variable to track the theme between page loads
+function switchTheme(e) {
+  document.body.classList.add("color-fade");
+  // toggleSwitch.disabled = true;
+  // setTimeout(() => { toggleSwitch.disabled = false }, 250)
+  if (e.target.checked) {
+    localStorage.setItem('theme', 'dark');
+    document.documentElement.setAttribute('data-theme', 'dark');
+    e.target.checked = true;
+  } else {
+    localStorage.setItem('theme', 'light');
+    document.documentElement.setAttribute('data-theme', 'light');
+    e.target.checked = false;
+  }
+}
+
+//listener for changing themes
+toggleSwitch.addEventListener('change', switchTheme, false);
+
+//pre-check the dark-theme checkbox if dark-theme is set
+if (document.documentElement.getAttribute("data-theme") == "dark") {
+  toggleSwitch.checked = true;
+}</script>
+</body>
+
+</html>

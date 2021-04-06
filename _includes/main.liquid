@@ -1,0 +1,30 @@
+---
+author: Mae Morella
+site_title: Mae B. Morella
+site_title_short: MM
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site_title_short }} | {{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="author" content="{{author}}">
+  <style>{% include styles.css %}</style>
+  <style>{% include prism-vars-color.css %}</style>
+  <!-- Devicon CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.8.2/devicon.min.css">
+</head>
+
+<body>
+  {{ content }}
+  <footer class="footer">
+    <p>Copyright © {{ "now" | date: "%Y" }} {{author}}</p>
+  </footer>
+  <script>{% include dark.js %}</script>
+</body>
+
+</html>
