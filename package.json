@@ -2,7 +2,10 @@
   "name": "cs-4720-internet-programming",
   "description": "Code written for CS 4720",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "serve": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy --input=. --output=_site",
+    "deploy": "npm run build; gh-pages -d _site"
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,11 @@
   "homepage": "https://github.com/morellam-dev/cs-4720-internet-programming#readme",
   "dependencies": {
     "live-server": "^1.2.1"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.0",
+    "bootstrap": "^4.6.0",
+    "gh-pages": "^3.1.0"
   }
 }
