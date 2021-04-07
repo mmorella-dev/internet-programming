@@ -68,7 +68,7 @@ a:hover {
 
 h1, h2, h3, h4, h5 {
   font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 h1 {
@@ -136,6 +136,8 @@ h3 {
   <style>@import url(https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css);
 
 :root {
+  --prism-font-family: "Fira Code", Menlo, monospace;
+  --prism-font-size: 1rem;
   --prism-foreground: #000000;
   --prism-background: #fbfbfb;
   --prism-comment: #4a534a;
@@ -179,6 +181,12 @@ h3 {
 
 [class*='language-'] {
   white-space: pre-wrap !important;
+}
+
+code {
+  font-family: var(--prism-font-family);
+  background-color: var(--prism-background);
+  display: inline-block;
 }</style>
   <!-- Devicon CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.8.2/devicon.min.css">
