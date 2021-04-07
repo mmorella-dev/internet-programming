@@ -2,6 +2,21 @@
 
 A Simple JSON REST API for a database of scientific measurements taken at various locations.
 
+## Execution
+
+1. Install dependencies
+
+```bash
+pip install Flask Flask-Jsonpify Flask-RESTful SQLAlchemy
+```
+
+2. Start server
+
+```bash
+python measurement_server.py
+# Server now running on port 9000
+```
+
 ## API reference
 
 ### `/area` - List all areas

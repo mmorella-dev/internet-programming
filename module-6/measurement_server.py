@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, text
 from json import dumps
 
 SQLITE_FILE = "measures.db"
-SERVER_PORT = 443
+SERVER_PORT = 9000
 
 db_connect = create_engine(f'sqlite:///{SQLITE_FILE}')
 app = Flask(__name__)
