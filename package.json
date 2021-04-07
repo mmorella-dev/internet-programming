@@ -17,13 +17,10 @@
     "url": "https://github.com/morellam-dev/cs-4720-internet-programming/issues"
   },
   "homepage": "https://github.com/morellam-dev/cs-4720-internet-programming#readme",
-  "dependencies": {
-    "live-server": "^1.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.0",
-    "bootstrap": "^4.6.0",
     "gh-pages": "^3.1.0"
   }
 }
