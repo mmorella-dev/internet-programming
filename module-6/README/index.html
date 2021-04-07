@@ -1,5 +1,14 @@
 <h1>measurement_server</h1>
 <p>A Simple JSON REST API for a database of scientific measurements taken at various locations.</p>
+<h2>Execution</h2>
+<ol>
+<li>Install dependencies</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">pip <span class="token function">install</span> Flask Flask-Jsonpify Flask-RESTful SQLAlchemy</code></pre>
+<ol start="2">
+<li>Start server</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">python measurement_server.py<br><span class="token comment"># Server now running on port 9000</span></code></pre>
 <h2>API reference</h2>
 <h3><code>/area</code> - List all areas</h3>
 <p>Returns an array of every Area in the database.</p>
