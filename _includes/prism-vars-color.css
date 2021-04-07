@@ -2,7 +2,7 @@
 
 :root {
   --prism-font-family: "Fira Code", Menlo, monospace;
-  --prism-font-size: 1rem;
+  --prism-font-size: 0.9rem;
   --prism-foreground: #000000;
   --prism-background: #fbfbfb;
   --prism-comment: #4a534a;
