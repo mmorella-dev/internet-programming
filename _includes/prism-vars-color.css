@@ -1,6 +1,8 @@
 @import url(https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css);
 
 :root {
+  --prism-font-family: "Fira Code", Menlo, monospace;
+  --prism-font-size: 1rem;
   --prism-foreground: #000000;
   --prism-background: #fbfbfb;
   --prism-comment: #4a534a;
@@ -44,4 +46,10 @@
 
 [class*='language-'] {
   white-space: pre-wrap !important;
+}
+
+code {
+  font-family: var(--prism-font-family);
+  background-color: var(--prism-background);
+  display: inline-block;
 }
