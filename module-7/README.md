@@ -13,7 +13,7 @@ Per the no warranty clause of the MIT license in the root directory, these instr
    * Alternatively, download and install the XAMPP stack.
 1. Move the files in ./module-7/htdocs into your DocumentRoot.
      * On macOS, I created a symlink:
-       ```sh
+       ```bash
        rm /usr/local/var/www # homebrew puts httpd docroot here
        ln -s $PWD/module-7/htdocs /usr/local/var/www
        ```
