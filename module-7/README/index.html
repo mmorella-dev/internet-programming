@@ -1,12 +1,40 @@
-<h1>module-7</h1>
-<h2>Installation</h2>
-<ul>
-<li>Install
-<ul>
-<li>On macOS, I created a symlink from `/usr/local/var</li>
+<h1>module-7 - Python CGI App</h1>
+<h2>Disclaimer</h2>
+<p>Apache configurations are not portable, so executing this project locally (especially on a different operating system), may be a challenge.</p>
+<p>Per the no warranty clause of the MIT license in the root directory, these instructions are not guaranteed to work.</p>
+<h2>Usage</h2>
+<ol>
 <li>
-<pre><code></code></pre>
+<p>Install the Apache HTTP server.</p>
+<ul>
+<li><code>brew install httpd</code></li>
+<li>Alternatively, download and install the XAMPP stack.</li>
+</ul>
+</li>
+<li>
+<p>Move the files in ./module-7/htdocs into your DocumentRoot.</p>
+<ul>
+<li>On macOS, I created a symlink:<pre class="language-bash"><code class="language-bash"><span class="token function">rm</span> /usr/local/var/www <span class="token comment"># homebrew puts httpd docroot here</span><br><span class="token function">ln</span> -s <span class="token environment constant">$PWD</span>/module-7/htdocs /usr/local/var/www</code></pre>
 </li>
 </ul>
 </li>
+<li>
+<p>Enable the CGI module in httpd.conf:</p>
+<ul>
+<li>
+<pre class="language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>IfModule</span> <span class="token attr-name">!mpm_prefork_module</span><span class="token punctuation">></span></span><br>  # -- uncomment this line --<br>  LoadModule cgid_module lib/httpd/modules/mod_cgid.so<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>IfModule</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>IfModule</span> <span class="token attr-name">mpm_prefork_module</span><span class="token punctuation">></span></span><br>  # -- also uncomment this line --<br>  LoadModule cgi_module lib/httpd/modules/mod_cgi.so<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>IfModule</span><span class="token punctuation">></span></span></code></pre>
+</li>
 </ul>
+</li>
+<li>
+<p>Configure httpd.conf to allow executing CGI files:</p>
+<ul>
+<li>
+<pre class="language-xml"><code class="language-xml">&lt;Directory "/usr/local/var/www/cgi-bin"><br>  AllowOverride None<br>  Options ExecCGI<br>  Order allow,deny<br>  Allow from all<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Directory</span><span class="token punctuation">></span></span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Start the Httpd server, and navigate to the page in your web browser.</p>
+</li>
+</ol>
