@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Form for Python</title>
+  <link rel="Stylesheet" type="text/css" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.875">
+  <style>
+    form fieldset {
+      border: 1px solid gray;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    form fieldset[disabled] {
+      background: rgba(0, 0, 0, )
+    }
+
+    form legend {
+      background: var(--font-color);
+      color: var(--bg-color);
+      text-shadow: none;
+      font-size: 1em;
+      font-weight: bold;
+      font-family: 'Times New Roman', Times, serif;
+      text-transform: uppercase;
+      display: inline-block;
+      width: unset;
+      margin: 0 -1ch;
+      padding: 0 1ch;
+    }
+
+    form label {
+      display: block;
+    }
+
+    form input[type="text"] {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Python CGI Form Example</h1>
+  <form method="POST" action="/cgi-bin/submit.py">
+    <fieldset>
+      <legend>Shipping information</legend>
+      <label>Name
+        <input name="shipping-name" type="text" autocomplete="name" required />
+      </label>
+      <label>Zip code
+        <input name="shipping-zip" type="text" autocomplete="postal-code" required>
+      </label>
+    </fieldset>
+    <fieldset id="billing-info">
+      <legend>Billing information</legend>
+      <label>Billing information is the same? <input name="billing-info-same" type="checkbox" checked /></label>
+      <label>Name
+        <input name="billing-name" type="text" autocomplete="name" required />
+      </label>
+      <label>Zip code
+        <input name="billing-zip" type="text" autocomplete="postal-code" required />
+      </label>
+    </fieldset>
+    <input type="submit" value="Calculate" />
+  </form>
+  <script>
+    { // closure
+      // select elements
+      const { "shipping-name": shippingNameEl, "shipping-zip": shippingZipEl, "billing-name": billingNameEl,
+        "billing-zip": billingZipEl,
+        "billing-info-same": billingInfoSameEl
+      } = document.querySelector("form").elements;
+
+      function updateBillingInfo() {
+        // change placeholder text
+        billingNameEl.placeholder = shippingNameEl.value;
+        billingZipEl.placeholder = shippingZipEl.value;
+        // disable inputs if checkbox checked
+        billingNameEl.disabled = billingInfoSameEl.checked;
+        billingZipEl.disabled = billingInfoSameEl.checked;
+      }
+      document.querySelector("form")
+        .addEventListener("input", updateBillingInfo);
+      document.querySelector("form")
+        .addEventListener("change", updateBillingInfo);
+      updateBillingInfo();
+    } // end closure
+  </script>
+</body>
+
+</html>

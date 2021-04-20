@@ -17,6 +17,8 @@ layout: main
   </li>
   <li><a href="module-6/"><i class="devicon-python-plain" title="Python"> </i>Assignment 6</a>
   </li>
+  <li><a href="module-7/"><i class="devicon-apache-plain" title="Apache"> </i>Assignment 7</a>
+  </li>
   <li><a href="https://github.com/morellam-dev/cs-4720-internet-programming"><i class="devicon-github-original" title="GitHub"></i> View on GitHub</a></li>
 </ul>
 </header>
