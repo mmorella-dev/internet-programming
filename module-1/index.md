@@ -15,12 +15,6 @@ This site was created in January 2021, as part of an assignment for CS 4720 Inte
 
 In April 2021, the site was completely rewritten using [Eleventy](https://www.11ty.dev/), a really good static site generator.
 
-### Websites I like
-
-* [Homestuck](https://www.homestuck.com/) – A multimedia webcomic about four friends who play a game
-* [Wikipedia](https://www.wikipedia.org/) – The free online encyclopedia
-* [Feedly](https://feedly.com) – A news aggregator application
-
 ## Credits and special thanks
 
 This webpage is provided under the [MIT License](https://github.com/morellam-dev/cs-4720-internet-programming/blob/main/LICENSE). It
