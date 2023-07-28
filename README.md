@@ -2,7 +2,7 @@
 
 A website created for CS 4720 - Internet Programming at Kennesaw State University.
 
-[![A screenshot of the homepage in dark mode](static/screenshot.png)](https://morellam-dev.github.io/internet-programming/)
+[![A screenshot of the homepage in dark mode](static/screenshot.png)](https://morellam-dev.github.io/internet-programming/))
 
 This is a static site, which is hosted [here on GitHub Pages]([https://morellam-dev.github.io/cs-4720-internet-programming/](https://morellam-dev.github.io/internet-programming/).
 ## Local development
