@@ -1,4 +1,4 @@
-# cs-4720-internet-programming
+# internet-programming
 
 A website created for CS 4720 - Internet Programming at Kennesaw State University.
 
